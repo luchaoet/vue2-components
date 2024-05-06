@@ -5,8 +5,12 @@
 			<el-button @click="label++">change label {{ label }}</el-button>
 			<el-button @click="handleTest">调试</el-button>
 		</div>
+
+		<SearchForm :formItems="[{prop: 'a', component: 'input'}]" v-model="queryValues" />
+
 		<TableV2 
 			:request="getList" 
+			:query="queryValues"
 			ref="singleTable"
 			@selection-change="selectionChange"
 			:max-height="500"
@@ -76,13 +80,16 @@
 <script>
 import { request } from "@/utils";
 import { TableV2, TableV2Colunm } from "@/components/Table";
+import SearchForm from "@/components/SearchForm";
 
 export default {
-	components: { TableV2, TableV2Colunm },
+	components: { TableV2, TableV2Colunm, SearchForm },
 	data() {
 		return {
 			toggle: false,
 			label: 1,
+
+			queryValues: {},
 		};
 	},
 	// computed: {},
@@ -90,8 +97,8 @@ export default {
 	methods: {
 		getList(data) {
 			return request({
-				url: "/console/connector/notInMeta/list?connectorScope=all&versionType=current&excludeHidden=true",
-				// url: "/console/auth/project/queryAuthorizedAuthList",
+				// url: "/console/connector/notInMeta/list?connectorScope=all&versionType=current&excludeHidden=true",
+				url: "/console/auth/project/queryAuthorizedAuthList",
 				// url: "/prod-api/robot/admin/order/list?current=1&size=10",
 				data,
 			});

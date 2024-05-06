@@ -3,6 +3,7 @@ import { Table, TableColumn, Pagination } from "element-ui";
 import { isFunction, isObject, empty } from "./utils";
 import HeaderSort from "./header-sort.vue";
 import HeaderFilter from "./header-filter.vue";
+import { debounce } from "lodash";
 
 export default {
 	components: {
@@ -11,6 +12,10 @@ export default {
 		Pagination,
 	},
 	props: {
+		query: {
+			type: Object,
+			default: () => ({}),
+		},
 		paginationProps: Object,
 		request: Function,
 		data: Array,
@@ -85,6 +90,15 @@ export default {
 			allFilters: {},
 		};
 	},
+	watch: {
+		query: {
+			immediate: true,
+			deep: true,
+			handler: debounce(function () {
+				this.getData();
+			}, 500),
+		},
+	},
 	computed: {
 		isUseDataProp() {
 			return !this.request || !!this.data;
@@ -103,9 +117,7 @@ export default {
 			return style;
 		},
 	},
-	created() {
-		this.getData();
-	},
+	created() {},
 	methods: {
 		handleSizeChange(v) {
 			this.pager.pageSize = v;
@@ -121,14 +133,15 @@ export default {
 
 			this.dataSource = [];
 			this.loading = true;
+			const query = this.query || {};
 			this.request({
+				...query,
 				page: this.pager.currentPage,
-				pageSize: 999, //this.pager.pageSize,
+				pageSize: this.pager.pageSize,
 				isPage: true,
 			})
 				.then(({ data, pager }) => {
-					this.dataSource =
-						[...data, ...data, ...data, ...data, ...data, ...data] || [];
+					this.dataSource = data || [];
 					this.pager = pager;
 				})
 				.finally(() => {

@@ -19,6 +19,16 @@ const routes = [
     name: 'table',
     component: () => import(/* webpackChunkName: "table" */ '../views/Table.vue')
   },
+  {
+    path: '/dialog',
+    name: 'dialog',
+    component: () => import(/* webpackChunkName: "dialog" */ '../views/Dialog.vue')
+  },
+  {
+    path: '/filter',
+    name: 'filter',
+    component: () => import(/* webpackChunkName: "filter" */ '../views/Filter.vue')
+  },
 ]
 
 const router = new VueRouter({
