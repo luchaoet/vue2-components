@@ -1,5 +1,29 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="wrapper">
+    <TimeReservation />
   </div>
 </template>
+
+<script>
+import TimeReservation from "@/components/TimeReservation";
+export default {
+	components: { TimeReservation },
+	data() {
+		return {};
+	},
+	// computed: {},
+	// watch: {},
+	methods: {},
+	// created() {},
+	// mounted() {},
+	// beforeCreate() {},
+	// beforeMount() {},
+	// beforeUpdate() {},
+	// updated() {},
+	// beforeDestroy() {},
+	// destroyed() {},
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

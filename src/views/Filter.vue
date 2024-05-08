@@ -1,13 +1,15 @@
 <template>
   <div class="wrapper">
-    <SearchForm :form-items="formItems" v-model="searchValues" @change="handleChange" immediate />
+    <SearchForm :form-items="formItems" v-model="searchValues" @change="handleChange" immediate class="g-m-b-40" />
+		<JsonGenerator :dataSource="dataSource" />
   </div>
 </template>
 
 <script>
 import SearchForm from "@/components/SearchForm";
+import JsonGenerator from "@/components/JsonGenerator";
 export default {
-	components: { SearchForm },
+	components: { SearchForm, JsonGenerator },
 	data() {
 		return {
 			formItems: [
@@ -35,6 +37,25 @@ export default {
 				},
 			],
 			searchValues: { a: 11 },
+
+			dataSource: [
+				{
+					label: "标签",
+					prop: "label",
+					options: [
+						{ label: 1, value: 1 },
+						{ label: 2, value: 3 },
+					],
+				},
+				{
+					label: "设备号",
+					prop: "op",
+				},
+				{
+					label: "身份证号码",
+					prop: "idCard",
+				},
+			],
 		};
 	},
 	// computed: {},

@@ -220,7 +220,6 @@ export default {
 
 		return (
 			<div class="table-wrapper" v-loading={loading}>
-				{dataSource.length}
 				<el-table
 					ref="elTable"
 					on={on}
