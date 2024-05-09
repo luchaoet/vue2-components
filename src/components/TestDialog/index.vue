@@ -18,12 +18,19 @@ export default {
 	components: {},
 	props: {
 		title: String,
+		row: Array,
 	},
 	data() {
 		return {
 			visible: false,
 			loading: false,
 		};
+	},
+	created() {
+		console.log("created", this.row);
+	},
+	mounted() {
+		console.log("mounted", this.row);
 	},
 	methods: {
 		handleClose() {

@@ -21,7 +21,7 @@ export default {
 		handleClick: () => {
 			const dialog = testDialog({
 				// 如果自己需要传参数 Dialog props中也是要定义的
-				title: "11",
+				title: "自定义title",
 				row: [1, 2],
 			})
 				.ok((params) => {

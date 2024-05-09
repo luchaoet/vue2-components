@@ -15,16 +15,9 @@ class Portal {
 	render(props = {}) {
 		if (!this.dialog) return;
 		const constructor = Vue.extend(this.dialog);
-		const instance = new constructor();
-		const functions = {};
+		const instance = new constructor({ propsData: props });
 
-		instance.$on('hook:beforeMount', () => {
-			if (isObject(props)) {
-				for (const key of Object.keys(props)) {
-					instance[key] = props[key];
-				}
-			}
-		});
+		const functions = {};
 
 		instance.$on('hook:mounted', () => {
 			instance.visible = true;
