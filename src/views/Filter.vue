@@ -1,15 +1,15 @@
 <template>
   <div class="wrapper">
     <SearchForm :form-items="formItems" v-model="searchValues" @change="handleChange" immediate class="g-m-b-40" />
-		<JsonGenerator :dataSource="dataSource" />
+		<FilterGroup :defaultValue="{rules: [{prop: 'idCard', value: 'qwe', operator: 'eq'}]}" :dataSource="dataSource" @change="handleChange" />
   </div>
 </template>
 
 <script>
 import SearchForm from "@/components/SearchForm";
-import JsonGenerator from "@/components/JsonGenerator";
+import FilterGroup from "@/components/FilterGroup";
 export default {
-	components: { SearchForm, JsonGenerator },
+	components: { SearchForm, FilterGroup },
 	data() {
 		return {
 			formItems: [
@@ -46,10 +46,12 @@ export default {
 						{ label: 1, value: 1 },
 						{ label: 2, value: 3 },
 					],
+					default: true,
 				},
 				{
 					label: "设备号",
 					prop: "op",
+					default: true,
 				},
 				{
 					label: "身份证号码",
