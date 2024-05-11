@@ -28,8 +28,8 @@
       </el-form-item>
 
 			<el-form-item v-if="showConfirmButton || showResetButton" class="form-item">
-				<el-button v-if="showConfirmButton" type="primary" @click="submitForm">提交</el-button>
 				<el-button v-if="showResetButton" @click="resetFields">重置</el-button>
+				<el-button v-if="showConfirmButton" type="primary" @click="submitForm">提交</el-button>
 			</el-form-item>
 			
     </el-form>
