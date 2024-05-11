@@ -29,6 +29,11 @@ const routes = [
     name: 'filter',
     component: () => import(/* webpackChunkName: "filter" */ '../views/Filter.vue')
   },
+  {
+    path: '/form',
+    name: 'form',
+    component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
+  },
 ]
 
 const router = new VueRouter({

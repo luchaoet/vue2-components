@@ -11,17 +11,16 @@ import testDialog from "@/components/TestDialog";
 
 export default {
 	components: {},
-	props: {
-		title: String,
-	},
+
 	data() {
 		return {};
 	},
+
 	methods: {
 		handleClick: () => {
 			const dialog = testDialog({
 				// 如果自己需要传参数 Dialog props中也是要定义的
-				title: "自定义title",
+				// title: "自定义title",
 				row: [1, 2],
 			})
 				.ok((params) => {

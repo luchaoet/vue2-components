@@ -1,4 +1,4 @@
 
-const baseURL = 'https://api.solinkup.com'
+const baseURL = ''; //'https://api.solinkup.com'
 
 export default baseURL;

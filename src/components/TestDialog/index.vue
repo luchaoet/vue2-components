@@ -17,7 +17,10 @@
 export default {
 	components: {},
 	props: {
-		title: String,
+		title: {
+			type: String,
+			default: "dialog默认标题",
+		},
 		row: Array,
 	},
 	data() {
@@ -27,7 +30,7 @@ export default {
 		};
 	},
 	created() {
-		console.log("created", this.row);
+		console.log("created", this.title);
 	},
 	mounted() {
 		console.log("mounted", this.row);
