@@ -4,6 +4,8 @@
 		:visible="visible"
 		@close="handleClose"
 		width="500px"
+		:close-on-click-modal="false"
+		:close-on-press-escape="false"
 	>
 		<div v-if="inputTitle" class="color-333 g-lh-22 g-fs-14 g-fw-b g-m-b-8">{{inputTitle}}</div>
 		<div :class="['el-form-item g-m-b-0', {'is-error': !!errorMessage}]">
@@ -13,8 +15,9 @@
 				autofocus
 				:placeholder="inputPlaceholder" 
 				:size="inputSize"
-				:show-word-limit="true"
+				show-word-limit
 				type="text"
+				clearable
 				:maxlength="inputMaxLength"
 				@input="handleInputChange"
 				@keyup.enter.native="handleOk"
@@ -24,8 +27,8 @@
 		<p v-if="inputMessage" class="g-m-t-8 g-fs-12 color-666 g-lh-20">{{inputMessage}}</p>
 
 		<span slot="footer" class="dialog-footer">
-			<el-button type="ghost" @click="handleCancel">取 消</el-button>
-			<el-button type="primary" :loading="loading" @click="handleOk">确 定</el-button>
+			<el-button type="ghost" @click="handleCancel" size="medium">取 消</el-button>
+			<el-button type="primary" :loading="loading" @click="handleOk" size="medium">确 定</el-button>
 		</span>
 	</el-dialog>
 </template>
@@ -93,4 +96,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+:deep(.el-dialog__header) {
+	padding: 16px 24px;
+	box-shadow: inset 0 -1px #eee;
+}
+:deep(.el-dialog__body) {
+	padding: 20px 30px 24px;
+	background: #f5f6f7;
+}
+:deep(.el-dialog__footer) {
+	padding: 20px 24px;
+	box-shadow: inset 0 1px #eee;
+}
 </style>
